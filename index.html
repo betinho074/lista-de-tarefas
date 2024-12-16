@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas - Relatórios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f0ff;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5e35b1;
+      margin-top: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input {
+      width: 60%;
+      border: 1px solid #7e57c2;
+    }
+
+    button {
+      background-color: #7e57c2;
+      color: white;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    li {
+      background: #ffffff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .concluido {
+      text-decoration: line-through;
+      color: #9575cd;
+    }
+
+    .icon {
+      cursor: pointer;
+      color: #7e57c2;
+    }
+
+    .icon:hover {
+      color: #5e35b1;
+    }
+
+    .contador {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #5e35b1;
+      font-weight: bold;
+    }
+
+    .filtros {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .filtros button {
+      background-color: #9575cd;
+      color: white;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .filtros button:hover {
+      background-color: #5e35b1;
+    }
+
+    /* Painel de Relatórios */
+    #painelRelatorios {
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    canvas {
+      max-width: 100%;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Tarefas</h1>
+
+  <!-- Entrada de tarefas -->
+  <div style="text-align: center;">
+    <input id="novaTarefa" placeholder="Digite uma tarefa" />
+    <button id="adicionar">Adicionar Tarefa</button>
+    <button id="excluirTodas">Excluir Todas</button>
+  </div>
+
+  <!-- Contador -->
+  <div class="contador" id="contador">Total: 0 | Concluídas: 0 | Pendentes: 0</div>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <button id="filtroTodas">Todas</button>
+    <button id="filtroConcluidas">Concluídas</button>
+    <button id="filtroPendentes">Pendentes</button>
+  </div>
+
+  <!-- Lista de tarefas -->
+  <ul id="listaTarefas"></ul>
+
+  <!-- Botão para Relatórios -->
+  <div style="text-align: center; margin-top: 10px;">
+    <button id="verRelatorios">Ver Relatórios</button>
+  </div>
+
+  <!-- Painel de Relatórios -->
+  <div id="painelRelatorios">
+    <h2>Relatórios de Produtividade</h2>
+    <canvas id="graficoTarefasPorDia" width="400" height="200"></canvas>
+    <canvas id="graficoStatusGeral" width="400" height="200"></canvas>
+    <button id="fecharRelatorios" style="margin-top: 20px;">Fechar Relatórios</button>
+  </div>
+
+  <!-- jsPDF & Chart.js Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
